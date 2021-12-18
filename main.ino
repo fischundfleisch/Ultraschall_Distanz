@@ -13,8 +13,8 @@ pinMode(ECHO, INPUT);
 void loop() {
   unsigned long act_time = millis();
   unsigned long time_span = act_time - scan_timer_;
-  long dauer = 0;
-  long entfernung = 0;
+  long duration = 0;
+  long distance = 0;
 
   if (time_span > SCAN_FREQ) {
     digitalWrite(TRIGGER, LOW);
@@ -22,8 +22,8 @@ void loop() {
     digitalWrite(TRIGGER, HIGH);
     delay(10);
     digitalWrite(TRIGGER, LOW);
-    dauer = pulseIn(ECHO, HIGH);
-    entfernung = (dauer/2) *0.03432; // oder: entfernung = (dauer/2)L * 0.03432L?
+    duration = pulseIn(ECHO, HIGH);
+    distance = ((duration/2.) *0.03432)+0.5; // +0.5 zum Runden
     Serial.print("Entfernung: ");
     Serial.print(entfernung);
     Serial.println(" cm);
