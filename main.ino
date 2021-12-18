@@ -23,10 +23,11 @@ void loop() {
     delay(10);
     digitalWrite(TRIGGER, LOW);
     duration = pulseIn(ECHO, HIGH);
+    Serial.println(duration);
     distance = ((duration/2.) *0.03432)+0.5; // +0.5 zum Runden
     Serial.print("Entfernung: ");
     Serial.print(entfernung);
-    Serial.println(" cm);
+    Serial.println(" cm");
   }
 
 }
