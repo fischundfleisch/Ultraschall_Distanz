@@ -8,6 +8,7 @@ void setup() {
 Serial.begin(9600);
 pinMode(TRIGGER, OUTPUT);
 pinMode(ECHO, INPUT);
+digitalWrite(ECHO, LOW);
 }
 
 void loop() {
@@ -22,8 +23,8 @@ void loop() {
     digitalWrite(TRIGGER, HIGH);
     delay(10);
     digitalWrite(TRIGGER, LOW);
-    duration = pulseIn(ECHO, HIGH);
-    Serial.println(duration);
+    duration = pulseIn(ECHO, HIGH); //returns micros
+    //Serial.println(duration);
     distance = ((duration/2.) *0.03432)+0.5; // +0.5 zum Runden
     Serial.print("Entfernung: ");
     Serial.print(distance);
